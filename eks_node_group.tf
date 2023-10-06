@@ -1,7 +1,7 @@
 resource "aws_instance" "kubectl-server" {
-  ami                         = "ami-06ca3ca175f37dd66"
-  key_name                    = "EKSKEYPAIR"
-  instance_type               = "t2.micro"
+  ami                         = "ami-0f5ee92e2d63afc18"
+  key_name                    = "neww"
+  instance_type               = "t2.medium"
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.public-1.id
   vpc_security_group_ids      = [aws_security_group.allow_tls.id]
@@ -19,10 +19,10 @@ resource "aws_eks_node_group" "node-grp" {
   subnet_ids      = [aws_subnet.public-1.id, aws_subnet.public-2.id]
   capacity_type   = "ON_DEMAND"
   disk_size       = "20"
-  instance_types  = ["t2.small"]
+  instance_types  = ["t2.medium"]
 
   remote_access {
-    ec2_ssh_key               = "EKSKEYPAIR"
+    ec2_ssh_key               = "neww"
     source_security_group_ids = [aws_security_group.allow_tls.id]
   }
 
