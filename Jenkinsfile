@@ -8,7 +8,7 @@ checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfig
     }
      stage ('terraform-init') {
       steps {
-sh 'terraform init'
+sh 'terraform init -reconfigure'
       }
     }
       stage ('terraform-plan') {
