@@ -8,7 +8,7 @@ checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfig
     }
      stage ('terraform-init') {
       steps {
-sh 'terraform init -reconfigure'
+sh 'terraform init'
       }
     }
       stage ('terraform-plan') {
@@ -20,7 +20,7 @@ sh 'terraform plan'
       stage ('terraform-apply') {
         
       steps {
-sh 'terraform destroy --auto-approve'
+sh 'terraform apply --auto-approve'
       }
     }
   }
